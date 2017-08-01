@@ -2,8 +2,8 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation=" http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   
     <persistence-unit name="Bookmanagement" transaction-type="JTA">
-        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
         <jta-data-source>java:/jdbc/Bookmanagement</jta-data-source>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>info.ka.bookmanagement.entities.Author</class>
         <class>info.ka.bookmanagement.entities.Book</class>
         <properties>
@@ -13,6 +13,20 @@
             <property name="hibernate.connection.password" value="password"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/Bookmanagement"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="password"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
