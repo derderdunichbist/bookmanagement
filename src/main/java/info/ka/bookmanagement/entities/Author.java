@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
  * @author ka
  */
 @Entity
-class Author implements Serializable {
+public class Author implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
