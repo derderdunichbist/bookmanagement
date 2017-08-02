@@ -19,7 +19,7 @@ import org.junit.Test;
  */
 public class InsertTestData {
 
-    private static final String LOCAL_PERSISTENCE_UNIT_NAME = "test";
+    private static final String LOCAL_PERSISTENCE_UNIT_NAME = "bookmanagement_test_ds";
     EntityManagerFactory emf;
     EntityManager em;
     
