@@ -6,11 +6,7 @@
 package info.ka.bookmanagement.persistence.services;
 
 import info.ka.bookmanagement.entities.Book;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
