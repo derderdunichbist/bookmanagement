@@ -40,13 +40,13 @@ public class InsertTestData {
 
         Author authorOne = new Author();
         authorOne.setDateOfBirth(LocalDate.of(1995, Month.MARCH, 10));
-        authorOne.setVorname("Hans");
-        authorOne.setNachname("Müller");
+        authorOne.setFirstName("Hans");
+        authorOne.setLastName("Müller");
 
         Author authorTwo = new Author();
         authorTwo.setDateOfBirth(LocalDate.of(2001, Month.OCTOBER, 28));
-        authorTwo.setVorname("Karl Gustav");
-        authorTwo.setNachname("Jäger");
+        authorTwo.setFirstName("Karl Gustav");
+        authorTwo.setLastName("Jäger");
 
         List<Author> authors = new ArrayList<>(Arrays.asList(authorOne, authorTwo));
 
