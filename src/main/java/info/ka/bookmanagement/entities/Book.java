@@ -1,6 +1,5 @@
 package info.ka.bookmanagement.entities;
 
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,25 +14,26 @@ import javax.persistence.ManyToMany;
  * @author ka
  */
 @Entity
-public class Book implements Serializable {
+public class Book extends BaseEntity {
+
+    private static final long serialVersionUID = 2167717799450847992L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String title;
-    
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Author> authors;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
+    private List<ApplicationUser> applicationUsers;
 
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
     public String getTitle() {
         return title;
     }
@@ -49,7 +49,13 @@ public class Book implements Serializable {
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
-    
-    
-    
+
+    public List<ApplicationUser> getApplicationUsers() {
+        return applicationUsers;
+    }
+
+    public void setApplicationUsers(List<ApplicationUser> applicationUsers) {
+        this.applicationUsers = applicationUsers;
+    }
+
 }

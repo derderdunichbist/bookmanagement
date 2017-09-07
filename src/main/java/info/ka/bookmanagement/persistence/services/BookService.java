@@ -21,12 +21,8 @@ public class BookService {
     @Inject
     BookPs bookps;
     
-    public String saveBook() {
-        Book b = new Book();
-        b.setTitle("Inserted");
-        bookps.persistBook(b);
-        
-        return "";
+    public void saveBook(Book book) {
+        bookps.persistBook(book);
     }
     
 }

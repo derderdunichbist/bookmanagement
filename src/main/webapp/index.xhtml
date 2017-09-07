@@ -4,13 +4,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Books Overview</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-            <h:form>
-                <p:commandButton id="bookSave" value="Save Book" action="#{bookService.saveBook}"/>
-            </h:form>
+        <h:link outcome="overview.xhtml" value="Overview Link"/>
     </h:body>
 </html>
 

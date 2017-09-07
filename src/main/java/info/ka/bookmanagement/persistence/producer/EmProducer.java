@@ -1,10 +1,10 @@
 package info.ka.bookmanagement.persistence.producer;
 
-import info.ka.bookmanagement.persistence.qualifier.BookEntityManager;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import info.ka.bookmanagement.persistence.qualifier.BookManagementEntityManager;
 
 /**
  *
@@ -15,7 +15,7 @@ public class EmProducer {
     
     @PersistenceContext(unitName = "bookmanagement_ds")
     @Produces
-    @BookEntityManager
+    @BookManagementEntityManager
     EntityManager emBook;
     
 }

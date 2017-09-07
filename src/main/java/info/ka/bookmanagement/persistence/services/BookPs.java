@@ -1,12 +1,12 @@
 package info.ka.bookmanagement.persistence.services;
 
 import info.ka.bookmanagement.entities.Book;
-import info.ka.bookmanagement.persistence.qualifier.BookEntityManager;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
+import info.ka.bookmanagement.persistence.qualifier.BookManagementEntityManager;
 
 /**
  *
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public class BookPs {
     
     @Inject
-    @BookEntityManager
+    @BookManagementEntityManager
     private EntityManager bookEm;
     
     public void persistBook(@NotNull Book book) {

@@ -1,5 +1,6 @@
 package info.ka.bookmanagement.testdata;
 
+import info.ka.bookmanagement.entities.ApplicationUser;
 import info.ka.bookmanagement.entities.Book;
 import info.ka.bookmanagement.entities.Author;
 import java.time.LocalDate;
@@ -22,9 +23,9 @@ public class InsertTestData {
     private static final String LOCAL_PERSISTENCE_UNIT_NAME = "bookmanagement_test_ds";
     EntityManagerFactory emf;
     EntityManager em;
-    
+
     public InsertTestData() {
-        
+
     }
 
     @Before
@@ -35,9 +36,6 @@ public class InsertTestData {
 
     @Test
     public void generateTestData() {
-        Book book = new Book();
-        book.setTitle("Ein Buchtitel");
-
         Author authorOne = new Author();
         authorOne.setDateOfBirth(LocalDate.of(1995, Month.MARCH, 10));
         authorOne.setVorname("Hans");
@@ -47,13 +45,32 @@ public class InsertTestData {
         authorTwo.setDateOfBirth(LocalDate.of(2001, Month.OCTOBER, 28));
         authorTwo.setVorname("Karl Gustav");
         authorTwo.setNachname("Jäger");
+       
+        ApplicationUser appUserOne = new ApplicationUser();
+        appUserOne.setName("AppUserOne");
+
+        ApplicationUser appUserTwo = new ApplicationUser();
+        appUserTwo.setName("AppUserTwo");
 
         List<Author> authors = new ArrayList<>(Arrays.asList(authorOne, authorTwo));
-
-        book.setAuthors(authors);
-
+        
         em.getTransaction().begin();
-        em.persist(book);
+        for (int i = 0; i < 10; i++) {
+            Book book = new Book();
+            book.setTitle("Buchtitel " + i);
+            book.setAuthors(authors);
+
+            if (i % 2 == 0) {
+                appUserOne.getBooks().add(book);
+            } else {
+                appUserTwo.getBooks().add(book);
+            }
+            em.persist(book);
+            
+        }
+        em.persist(appUserOne);
+        em.persist(appUserTwo);
+        
         em.getTransaction().commit();
         em.close();
     }
