@@ -3,6 +3,7 @@ package info.ka.bookmanagement.testdata;
 import info.ka.bookmanagement.entities.ApplicationUser;
 import info.ka.bookmanagement.entities.Book;
 import info.ka.bookmanagement.entities.Author;
+import info.ka.bookmanagement.entities.ISBN;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -38,19 +39,21 @@ public class InsertTestData {
     public void generateTestData() {
         Author authorOne = new Author();
         authorOne.setDateOfBirth(LocalDate.of(1995, Month.MARCH, 10));
-        authorOne.setVorname("Hans");
-        authorOne.setNachname("Müller");
+        authorOne.setFirstName("Hans");
+        authorOne.setLastName("Müller");
 
         Author authorTwo = new Author();
         authorTwo.setDateOfBirth(LocalDate.of(2001, Month.OCTOBER, 28));
-        authorTwo.setVorname("Karl Gustav");
-        authorTwo.setNachname("Jäger");
+        authorTwo.setFirstName("Karl Gustav");
+        authorTwo.setLastName("Jäger");
        
         ApplicationUser appUserOne = new ApplicationUser();
         appUserOne.setName("AppUserOne");
-
+        appUserOne.setBooks(new ArrayList<Book>());
+        
         ApplicationUser appUserTwo = new ApplicationUser();
         appUserTwo.setName("AppUserTwo");
+        appUserTwo.setBooks(new ArrayList<Book>());
 
         List<Author> authors = new ArrayList<>(Arrays.asList(authorOne, authorTwo));
         
@@ -68,10 +71,30 @@ public class InsertTestData {
             em.persist(book);
             
         }
-        em.persist(appUserOne);
-        em.persist(appUserTwo);
         
         em.getTransaction().commit();
+        
+        Book book = new Book();
+        
+        Author markManson = new Author();
+        markManson.setFirstName("Mark");
+        markManson.setLastName("Manson");
+        markManson.setDateOfBirth(LocalDate.of(1984, Month.MARCH, 9));
+        
+        book.setAuthors(new ArrayList<>(Arrays.asList(markManson)));
+        book.setTitle("The Subtle Art of Not Giving a F*ck");
+        ISBN isbn = ISBN.of("978-19-2548-359-8");
+        book.setIsbn(isbn);
+        appUserOne.getBooks().add(book);
+        
+        em.getTransaction().begin();
+        em.persist(appUserOne);
+        em.getTransaction().commit();
+        
+        em.getTransaction().begin();
+        em.persist(appUserTwo);
+        em.getTransaction().commit();
+        
         em.close();
     }
 

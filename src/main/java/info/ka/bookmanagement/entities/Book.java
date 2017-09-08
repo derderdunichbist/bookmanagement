@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -29,6 +30,9 @@ public class Book extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     private List<ApplicationUser> applicationUsers;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private ISBN isbn;
 
     public Long getId() {
         return id;
@@ -58,4 +62,12 @@ public class Book extends BaseEntity {
         this.applicationUsers = applicationUsers;
     }
 
+    public ISBN getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(ISBN isbn) {
+        this.isbn = isbn;
+    }
+    
 }

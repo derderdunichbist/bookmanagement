@@ -21,27 +21,27 @@ public class Author extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String vorname;
-    private String nachname;
+    private String firstName;
+    private String lastName;
     private LocalDate dateOfBirth;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors")
     private List<Book> books;
 
-    public String getVorname() {
-        return vorname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public LocalDate getDateOfBirth() {
