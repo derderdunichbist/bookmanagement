@@ -42,7 +42,10 @@ public class ISBN implements Serializable {
     @OneToOne
     private Book book;
 
-    private ISBN() {
+    /**
+     * Is Public for Hibernate/CDI
+     */
+    public ISBN() {
 
     }
 
@@ -51,7 +54,7 @@ public class ISBN implements Serializable {
 
         this.originalISBN = originalISBN;
         this.normalizedISBN = removeHyphen(this.originalISBN);
-
+        
         String[] numbers = this.originalISBN.split("-");
         if (numbers.length == 5) {
             this.prefixDigits = numbers[0];
