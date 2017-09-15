@@ -7,17 +7,21 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-       <h1>Books Overview</h1>
-       <h2>Welcome #{applicationUserBean.currentUser.name}</h2>
-       <h:form>
-           <p:dataTable var="book" value="#{applicationUserBean.currentUser.books}">
-           <p:column headerText="Database ID">
-               <h:outputText value="#{book.id}"/>
-           </p:column>
-           <p:column headerText="Title">
-               <h:outputText value="#{book.title}"/>
-           </p:column>
-       </p:dataTable>
+        <h1>Books Overview</h1>
+        <h2>Welcome #{applicationUserBean.currentUser.name}</h2>
+        <h:form>
+            <p:dataTable var="book" stickyHeader="true" sortBy="#{book.id}"
+                         value="#{applicationUserBean.currentUser.books}">
+                <p:column headerText="Database ID">
+                    <h:outputText value="#{book.id}"/>
+                </p:column>
+                <p:column headerText="Title">
+                    <h:outputText value="#{book.title}"/>
+                </p:column>
+                <p:column headerText="ISBN">
+                    <h:outputText value="#{book.isbn.normalizedISBN}"/>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

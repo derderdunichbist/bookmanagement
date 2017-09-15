@@ -31,7 +31,7 @@ public class Book extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     private List<ApplicationUser> applicationUsers;
     
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private ISBN isbn;
 
     public Long getId() {
