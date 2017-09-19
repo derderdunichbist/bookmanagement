@@ -10,18 +10,28 @@
         <h1>Books Overview</h1>
         <h2>Welcome #{applicationUserBean.currentUser.name}</h2>
         <h:form>
-            <p:dataTable var="book" stickyHeader="true" sortBy="#{book.id}"
-                         value="#{applicationUserBean.currentUser.books}">
-                <p:column headerText="Database ID">
-                    <h:outputText value="#{book.id}"/>
-                </p:column>
-                <p:column headerText="Title">
-                    <h:outputText value="#{book.title}"/>
-                </p:column>
-                <p:column headerText="ISBN">
-                    <h:outputText value="#{book.isbn.normalizedISBN}"/>
-                </p:column>
-            </p:dataTable>
+            <p:accordionPanel multiple="true">
+                <p:tab closable="false" title="Current Books">
+                    <p:dataTable var="book" sortBy="#{book.id}"
+                                 value="#{applicationUserBean.currentUser.books}">
+                        <p:column headerText="Database ID">
+                            <h:outputText value="#{book.id}"/>
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputText value="#{book.title}"/>
+                        </p:column>
+                        <p:column headerText="ISBN">
+                            <h:outputText value="#{book.isbn.normalizedISBN}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+
+                <p:tab title="Future Books">
+                </p:tab>
+
+                <p:tab title="Read Books">
+                </p:tab>
+            </p:accordionPanel>
         </h:form>
     </h:body>
 </html>
