@@ -27,9 +27,6 @@ public class Book extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Author> authors;
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
-    private List<ApplicationUser> applicationUsers;
     
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private ISBN isbn;
@@ -52,14 +49,6 @@ public class Book extends BaseEntity {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
-    }
-
-    public List<ApplicationUser> getApplicationUsers() {
-        return applicationUsers;
-    }
-
-    public void setApplicationUsers(List<ApplicationUser> applicationUsers) {
-        this.applicationUsers = applicationUsers;
     }
 
     public ISBN getIsbn() {

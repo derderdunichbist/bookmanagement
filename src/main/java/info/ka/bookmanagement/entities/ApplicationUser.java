@@ -37,6 +37,10 @@ public class ApplicationUser extends BaseEntity {
     private List<Book> books;
 
     private String name;
+    
+    public Long getId() {
+        return id;
+    }
 
     public List<Book> getBooks() {
         return books;
