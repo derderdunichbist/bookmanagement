@@ -60,8 +60,10 @@ public class InsertTestData {
         em.getTransaction().begin();
         for (int i = 0; i < 10; i++) {
             Book book = new Book();
-            book.setTitle("Buchtitel " + i);
+            book.setTitle("Booktitle " + i);
             book.setAuthors(authors);
+            book.setPublisher("Publisher " + i);
+            book.setYearPublished(2015);
 
             if (i % 2 == 0) {
                 appUserOne.getBooks().add(book);
@@ -85,6 +87,8 @@ public class InsertTestData {
         book.setTitle("The Subtle Art of Not Giving a F*ck");
         ISBN isbn = ISBN.of("978-19-2548-359-8");
         book.setIsbn(isbn);
+        book.setPublisher("Harper One");
+        book.setYearPublished(2016);
         appUserOne.getBooks().add(book);
         
         em.getTransaction().begin();

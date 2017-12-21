@@ -23,6 +23,12 @@
                         <p:column headerText="ISBN">
                             <h:outputText value="#{book.isbn.normalizedISBN}"/>
                         </p:column>
+                        <p:column headerText="Publisher">
+                            <h:outputText value="#{book.publisher}"/>
+                        </p:column>
+                        <p:column headerText="Year Published">
+                            <h:outputText value="#{book.yearPublished}"/>
+                        </p:column>
                     </p:dataTable>
                 </p:tab>
 
